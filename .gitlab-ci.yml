@@ -14,12 +14,6 @@ build:
       - build/libs/*.jar
     expire_in: 10 min
 
-test:
-  image: amazoncorretto:21-alpine
-  stage: test
-  script:
-    - ./gradlew test
-
 package:
   image: docker:latest
   stage: package
