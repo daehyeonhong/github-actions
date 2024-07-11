@@ -1,7 +1,8 @@
-test-job:
-  stage:
-    - deploy
-    - build
+stages:
+  - build
+  - test
+  - package
+  - deploy
 
 build:
   image: amazoncorretto:21-alpine
