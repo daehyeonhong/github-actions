@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.mood"
-version = "0.0.1-SNAPSHOT"
+base.archivesName = "backend"
 
 java {
     toolchain {
@@ -34,4 +34,8 @@ kotlin {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.named<Jar>("jar") {
+    enabled = false
 }

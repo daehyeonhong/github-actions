@@ -7,8 +7,8 @@ import org.springframework.scheduling.annotation.Scheduled
 
 @Configuration
 class HelloWorldChatterbox {
-    @Scheduled(fixedDelay = 600000)
-    fun grumbleHelloWorld() {
+    @Scheduled(fixedDelay = 60_000)
+    fun blabberHelloWorld() {
         logger.info("Hello, world!")
     }
 
