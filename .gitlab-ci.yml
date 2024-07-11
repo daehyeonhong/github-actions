@@ -27,7 +27,7 @@ package:
   services:
     - docker:dind
   before_script:
-    - docker login -u $DOCKER_HUB_USER -p "$$DOCKER_HUB_PASSWORD"
+    - docker login -u $DOCKER_HUB_USER -p "$DOCKER_HUB_PASSWORD"
   script:
     - docker build -t $IMAGE_NAME
     - docker push $IMAGE_NAME
@@ -39,7 +39,7 @@ deploy:
   tags:
     - mood-backend
   before_script:
-    - docker login -u $DOCKER_HUB_USER -p "$$DOCKER_HUB_PASSWORD"
+    - docker login -u $DOCKER_HUB_USER -p "$DOCKER_HUB_PASSWORD"
   script:
     - docker stop $CONTAINER_NAME || true
     - docker rm $CONTAINER_NAME || true
