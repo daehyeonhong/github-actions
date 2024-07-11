@@ -25,7 +25,7 @@ package:
   image: docker:latest
   stage: package
   services:
-    - docker:bind
+    - docker:dind
   before_script:
     - docker login -u $DOCKER_HUB_USER --password-stdin < $DOCKER_HUB_PASSWORD
   script:
