@@ -30,7 +30,7 @@ package:
 deploy:
   stage: deploy
   tags:
-    - mood-backend
+    - mood_backend
   before_script:
     - docker login $CI_REGISTRY -u $DOCKER_HUB_USER -password-stdin < "$DOCKER_HUB_PASSWORD"
   script:
