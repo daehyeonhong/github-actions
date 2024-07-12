@@ -7,7 +7,7 @@ build:
   image: amazoncorretto:21-alpine
   stage: build
   script:
-    - ./gradlew clean
+    - ./gradlew --stacktrace clean
     - ./gradlew bootJar
   artifacts:
     paths:
