@@ -1,0 +1,47 @@
+stages:
+  - build
+  - package
+  - deploy
+
+build:
+  image: amazoncorretto:21-alpine
+  stage: build
+  script:
+    - ./gradlew clean
+    - ./gradlew bootJar
+  artifacts:
+    paths:
+      - build/libs/*.jar
+    expire_in: 10 min
+
+package:
+  image: docker:latest
+  stage: package
+  services:
+    - docker:dind
+  before_script:
+    - cat /etc/resolv.conf
+    - cat /etc/hosts
+    - docker login $CI_REGISTRY -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
+  script:
+    - docker build -t $IMAGE_NAME .
+    - docker push $IMAGE_NAME
+  after_script:
+    - docker logout
+
+deploy:
+  stage: deploy
+  tags:
+    - mood_backend
+  before_script:
+    - docker login $CI_REGISTRY -u $DOCKER_HUB_USER --password-stdin < "$DOCKER_HUB_PASSWORD"
+  script:
+    - docker stop $CONTAINER_NAME || true
+    - docker rm $CONTAINER_NAME || true
+    - docker rmi $CONTAINER_NAME || true
+    - docker run -d --restart always -p 8080:8080/tcp --name $CONTAINER_NAME $IMAGE_NAME
+  after_script:
+    - docker logout
+  when: on_success
+  only:
+    - main
