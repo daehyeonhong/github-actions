@@ -14,6 +14,12 @@ build:
       - build/libs/*.jar
     expire_in: 10 min
 
+test:
+  image: amazoncorretto:21-alpine
+  stage: test
+  script:
+    - ./gradlew test
+
 package:
   image: docker:latest
   stage: package
@@ -32,7 +38,7 @@ deploy:
   tags:
     - mood_backend
   before_script:
-    - docker login $CI_REGISTRY -u $DOCKER_HUB_USER --password-stdin < "$DOCKER_HUB_PASSWORD"
+    - docker login $CI_REGISTRY -u $DOCKER_HUB_USER --password-stdin < $DOCKER_HUB_PASSWORD
   script:
     - docker stop $CONTAINER_NAME || true
     - docker rm $CONTAINER_NAME || true
