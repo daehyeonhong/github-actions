@@ -1,4 +1,4 @@
-package com.mood.gitlab
+package com.example.github
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

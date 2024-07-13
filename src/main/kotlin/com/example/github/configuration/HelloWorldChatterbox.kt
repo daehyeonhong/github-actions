@@ -1,4 +1,4 @@
-package com.mood.gitlab.configuration
+package com.example.github.configuration
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
