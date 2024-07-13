@@ -51,10 +51,6 @@ configure<JibExtension> {
     to {
         tags = setOf("latest")
         image = "hongdae/mood-backend"
-        auth {
-            username
-            password
-        }
     }
 
     container {
