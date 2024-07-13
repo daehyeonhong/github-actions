@@ -41,6 +41,6 @@ jobs:
 
       - name: Build with jib
         run: | 
-          ./gradlew jib\
-          -Djib.to.auth.username=${{ secrets.DOCKER_USERNAME }}\
+          ./gradlew jib \
+          -Djib.to.auth.username=${{ secrets.DOCKER_USERNAME }} \
           -Djib.to.auth.password=${{ secrets.DOCKER_PASSWORD }}
