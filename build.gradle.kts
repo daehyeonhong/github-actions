@@ -50,7 +50,6 @@ configure<JibExtension> {
 
     to {
         tags = setOf("latest")
-        image = "hongdae/mood-backend"
     }
 
     container {
