@@ -51,9 +51,6 @@ configure<JibExtension> {
     to {
         tags = setOf("latest")
         image = "hongdae/mood-backend"
-        auth {
-            setCredHelper("docker")
-        }
     }
 
     container {
