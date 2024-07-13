@@ -1,1 +1,1 @@
-rootProject.name = "gitlab"
+rootProject.name = "github"

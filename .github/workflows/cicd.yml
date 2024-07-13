@@ -39,4 +39,4 @@ jobs:
           SPRING_PROFILES_ACTIVE: build
 
       - name: Build with jib
-        run: ./gradlew api:jib
+        run: ./gradlew jib
