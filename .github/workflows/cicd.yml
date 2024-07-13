@@ -34,12 +34,13 @@ jobs:
       - name: Docker build & push to prod
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: build project
+      - name: Build project
         run: ./gradlew bootJar
         env:
           SPRING_PROFILES_ACTIVE: build
 
       - name: Build with jib
-        run: ./gradlew jib\
-          -Djib.to.auth.username=${{ secrets.DOCKER_USERNAME }}
+        run: | 
+          ./gradlew jib\
+          -Djib.to.auth.username=${{ secrets.DOCKER_USERNAME }}\
           -Djib.to.auth.password=${{ secrets.DOCKER_PASSWORD }}
