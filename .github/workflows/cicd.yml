@@ -49,7 +49,6 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          mkdir scripts
           touch scripts/deploy.sh
           echo "docker login -u $DOCKER_USERNAME --password-stdin < $DOCKER_PASSWORD" >> scripts/deploy.sh
           echo "docker pull $DOCKER_IMAGE:$IMAGE_TAG" >> scripts/deploy.sh
