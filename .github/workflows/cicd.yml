@@ -49,8 +49,8 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.sha }}
           DOCKER_IMAGE: ${{ secrets.DOCKER_IMAGE }}
-          DOCKER_USERNAME: ${{ DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           touch scripts/deploy.sh
           echo "docker login -u $DOCKER_USERNAME --password-stdin < $DOCKER_PASSWORD" >> scripts/deploy.sh
