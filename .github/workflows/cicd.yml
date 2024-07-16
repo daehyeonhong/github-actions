@@ -44,6 +44,7 @@ jobs:
           -Djib.to.auth.username=${{ secrets.DOCKER_USERNAME }} \
           -Djib.to.auth.password=${{ secrets.DOCKER_PASSWORD }} \
           -Djib.to.image=${{ secrets.DOCKER_IMAGE }}
+          -Djib.to.tags=${{ github.sha }}
 
       - name: build docker file and setting deploy files
         env:

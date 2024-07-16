@@ -48,10 +48,6 @@ configure<JibExtension> {
         image = "amazoncorretto:21-alpine"
     }
 
-    to {
-        tags = setOf("latest")
-    }
-
     container {
         creationTime = "USE_CURRENT_TIMESTAMP"
         jvmFlags = listOf(
