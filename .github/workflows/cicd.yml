@@ -52,6 +52,8 @@ jobs:
           DOCKER_IMAGE: ${{ secrets.DOCKER_IMAGE }}
         run: |
           touch scripts/deploy.sh
+          echo "docker stop mood-api" >> scripts/deploy.sh
+          echo "docker rm mood-api" >> scripts/deploy.sh
           echo "docker pull $DOCKER_IMAGE:$IMAGE_TAG" >> scripts/deploy.sh
           echo "docker run -p 8080:8080 -d --restart always --name mood-api $DOCKER_IMAGE:$IMAGE_TAG" >> scripts/deploy.sh
 
